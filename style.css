@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+  background: #0a0e1a;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Page wrapper ── */
+.page {
+  position: relative;
+  min-height: 100svh;
+  min-height: 100vh;
+  width: 100%;
+  background: url('assets/bg.png') center center / cover no-repeat;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 36px 20px 48px;
+  overflow: hidden;
+}
+
+/* ── Dark gradient overlay ── */
+.bg-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 14, 40, 0.55) 0%,
+    rgba(10, 14, 40, 0.20) 40%,
+    rgba(10, 14, 40, 0.65) 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Content column ── */
+.content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* ── Promo block ── */
+.promo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  animation: fadeUp 0.5s ease both;
+}
+
+.promo-text {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-align: center;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
+}
+
+.promo-code {
+  display: inline-block;
+  background: #ffffff;
+  color: #111827;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  padding: 6px 22px;
+  border-radius: 100px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.22);
+  user-select: all;
+}
+
+/* ── Game card ── */
+.game-card {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.30),
+    0 2px 8px rgba(0, 0, 0, 0.10);
+  animation: fadeUp 0.6s ease both;
+}
+
+.game-card:nth-child(2) { animation-delay: 0.08s; }
+.game-card:nth-child(3) { animation-delay: 0.16s; }
+
+/* Card header row (icon + title) */
+.game-card__header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 20px 16px;
+}
+
+/* Card body (used in tower card below banner) */
+.game-card__body {
+  padding: 16px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ── Game icon (round) ── */
+.game-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 16px;
+  object-fit: cover;
+  border: 2px solid rgba(0, 0, 0, 0.08);
+  flex-shrink: 0;
+  background: #e5e7eb;
+  will-change: transform;
+  animation: float 3.2s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
+}
+
+/* ── Game banner image ── */
+.game-banner {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* ── Game title ── */
+.game-title {
+  font-size: 1.45rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 0.03em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+  line-height: 1.2;
+}
+
+.game-title--dark {
+  color: #111827;
+  text-shadow: none;
+}
+
+/* ── CTA Button / Link ── */
+.cta-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  background: #111827;
+  border-radius: 16px;
+  padding: 18px 20px 14px;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.game-card__header .cta-btn {
+  /* inside header row, CTA is inline – not used here, kept as fallback */
+}
+
+/* for tappy bird card, cta-btn sits outside header */
+.game-card > .cta-btn {
+  border-radius: 0 0 24px 24px;
+  padding: 16px 20px 20px;
+  background: #111827;
+}
+
+.cta-btn:hover  { opacity: 0.88; transform: scale(1.01); }
+.cta-btn:active { transform: scale(0.97); opacity: 0.95; }
+
+.cta-main {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #ffffff;
+  text-align: center;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+.cta-sub {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 400;
+  text-align: center;
+}
+
+/* ── Entrance animation ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Small screen tweaks ── */
+@media (max-width: 400px) {
+  .game-title  { font-size: 1.25rem; }
+  .cta-main    { font-size: 1.2rem; }
+  .game-icon   { width: 60px; height: 60px; }
+  .game-banner { height: 150px; }
+}
+
+@media (max-height: 680px) {
+  .page        { padding: 20px 20px 28px; }
+  .content     { gap: 12px; }
+  .game-banner { height: 130px; }
+}
